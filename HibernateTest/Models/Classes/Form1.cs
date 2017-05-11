@@ -5,13 +5,10 @@ using NHibernate;
 
 namespace HibernateTest.Models.Classes
 {
-
- 
-
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
         public IList<Employee> Faves;//List of locally stored presets
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -23,7 +20,6 @@ namespace HibernateTest.Models.Classes
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             ISession session = NHibertnateSession.OpenSession();
 
             Employee emp = new Employee();
@@ -32,7 +28,7 @@ namespace HibernateTest.Models.Classes
             emp.Designation = tbDesignation.Text;
             emp.SecondDesignation = tbSecondDesignation.Text;
             emp.ThirdDesignation = tbThirdDesignation.Text;
-            
+
             session.Save(emp);
             session.Close();
 
@@ -46,7 +42,7 @@ namespace HibernateTest.Models.Classes
             tbDesignation.Text = Faves[index].Designation;
             tbSecondDesignation.Text = Faves[index].Designation;
             tbThirdDesignation.Text = Faves[index].ThirdDesignation;
-        }   
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -58,11 +54,9 @@ namespace HibernateTest.Models.Classes
             else
             {
 
-                if (
-                    MessageBox.Show(@"Are you sure you want to remove favourite '" + cbPreset.SelectedItem + @"'?",
+                if (MessageBox.Show(@"Are you sure you want to remove favourite '" + cbPreset.SelectedItem + @"'?",
                         @"Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-
 
                     using (ISession session = NHibertnateSession.OpenSession())
                     {
@@ -83,8 +77,6 @@ namespace HibernateTest.Models.Classes
 
             }
         }
-
-        
 
         private void Populate() //repopulates combobox with newly saved objects
         {
@@ -121,14 +113,10 @@ namespace HibernateTest.Models.Classes
                     MessageBoxIcon.Error);
             }
         }
-
         private void cbPreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             Retrieve(cbPreset.SelectedIndex);
         }
-
-      
     }
-
 }
 
