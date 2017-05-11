@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+  <!--Hibernate Mapping File-->
+<!--Property Names must match Class Names-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="HibernateTest" namespace="HibernateTest.Models.Classes">
+  <class name="Employee" table="Employee" dynamic-update="true" xmlns="urn:nhibernate-mapping-2.2">
+    <cache usage="read-write"/>
+    <id name="Id" column="Id" type="int">
+      <generator class="native" />
+    </id>
+    <property name="FirstName" type="String" length="10"/>
+    <property name="LastName" />
+    <property name="Designation" />
+    <property name="SecondDesignation" />
+    <property name="ThirdDesignation" type="String" length="10"/>
+    <property name="Four" type="String" length="10"/>
+    <property name="Five" />
+    <property name="Six" />
+
+  </class>
+</hibernate-mapping>
